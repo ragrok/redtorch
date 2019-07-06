@@ -55,6 +55,7 @@ public class ZeusDataServiceImpl implements ZeusDataService, InitializingBean {
 		List<StrategySetting> strategySettingList = new ArrayList<>();
 		List<Document> documentList = defaultDBClient.find(clientDBName, strategySettingCollection);
 		if (!(documentList == null) && !documentList.isEmpty()) {
+			log.info("获取到的策略数据-{}",JSON.toJSONString(documentList));
 			for (Document document : documentList) {
 				String strategyID = document.getString("strategyID");
 				if (StringUtils.isEmpty(strategyID)) {
